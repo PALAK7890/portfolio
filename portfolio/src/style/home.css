@@ -1,0 +1,75 @@
+.home{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* 🔑 LOCK THE ARC CENTER */
+.letters-container{
+  position:absolute;
+  top:38%;          /* ABOVE IMAGE */
+  left:50%;
+    z-index:1; 
+  transform:translateX(-50%);
+}
+
+.letter{
+  position:absolute;
+
+  font-size:88px;            /* ⬅️ BIGGER LETTERS */
+  font-weight:700;
+  color:#000;
+
+ font-family: "Fredoka", sans-serif;
+
+  z-index:1;                 /* ⬅️ BEHIND IMAGE */
+
+  transform:
+    translate(var(--start-x), var(--start-y))
+    scale(0.4)
+    rotate(20deg);
+
+  opacity:0.92;
+
+  transition:
+    transform 1.4s cubic-bezier(.22,1.2,.36,1),
+    opacity 0.6s ease;
+
+  transition-delay:var(--delay);
+}
+
+@font-face {
+  font-family: "MilkywayDemo";
+  src: url("/fonts/Milkyway-DEMO.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ✅ FINAL SEMI-OVAL */
+.letter.place{
+  transform:
+    translate(var(--final-x), var(--final-y))
+    scale(1)
+    rotate(0deg);
+
+  opacity:1;
+}
+
+
+.home-image{
+  width:260px;        /* ⬅️ BIGGER */
+  height:320px;       /* ⬅️ OVAL SHAPE */
+
+  border-radius:50%;  /* oval because width ≠ height */
+  object-fit:cover;
+
+  margin-top:90px;
+  position:relative;  /* ⬅️ REQUIRED */
+  z-index:10;          /* ⬅️ ABOVE LETTERS */
+
+  box-shadow:0 35px 60px rgba(0,0,0,0.25);
+}
