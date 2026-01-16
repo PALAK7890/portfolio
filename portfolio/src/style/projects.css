@@ -1,0 +1,234 @@
+/* ===== PROJECTS PAGE ===== */
+.projects-page{
+  min-height:100vh;
+  padding:6rem 8rem;
+  background:#fdfaf5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* TITLE */
+.projects-title{
+  position:relative;              /* 🔑 REQUIRED */
+  font-family:'Fredoka', sans-serif;
+  font-size:4rem;
+  color:#000;
+  margin-bottom:1rem;
+  z-index:1;
+}
+
+/* ✏️ YELLOW HIGHLIGHTER */
+.projects-title::after{
+  content:"";
+  position:absolute;
+  left:-12px;
+  bottom:10px;
+
+  width:110%;
+  height:22px;
+
+  background:#f3c96b;
+  z-index:-1;
+
+  transform:rotate(-2deg);
+  border-radius:6px;   /* marker feel */
+}
+
+/* FUN LINE BELOW TITLE */
+.projects-subtitle{
+  margin-bottom:3.5rem;
+
+  font-family:'Fredoka', sans-serif;
+  font-size:1.3rem;
+  font-weight:400;
+
+  color:#000;
+  opacity:0.85;
+
+}
+.projects-subtitle{
+  opacity:0;
+  transform:translateY(10px) ;
+  transition:all 0.4s ease;
+}
+
+.projects-page.show .projects-subtitle{
+  opacity:1;
+  transform:translateY(0) ;
+  transition-delay:0.1s;
+}
+
+
+
+/* GRID */
+.projects-grid{
+  width:100%;
+  max-width:1100px;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:2.5rem;
+}
+
+/* CARD */
+.project-card{
+  border:3px solid #000;
+  border-radius:1.4rem;
+  padding:2rem;
+  background:#fff;
+
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+
+  opacity:0;
+  transform:translateY(30px) rotate(-3deg);
+
+  transition:
+    transform 0.6s cubic-bezier(.22,1.2,.36,1),
+    opacity 0.4s ease,
+    background 0.4s ease;
+}
+.projects-page.show .project-card{
+  opacity:1;
+  transform:translateY(0) rotate(0deg);
+}
+.projects-page.show .project-card:nth-child(1){ transition-delay:0.05s }
+.projects-page.show .project-card:nth-child(2){ transition-delay:0.12s }
+.projects-page.show .project-card:nth-child(3){ transition-delay:0.18s }
+.projects-page.show .project-card:nth-child(4){ transition-delay:0.24s }
+.projects-page.show .project-card:nth-child(5){ transition-delay:0.30s }
+.projects-page.show .project-card:nth-child(6){ transition-delay:0.36s }
+.project-buttons{
+  display:flex;
+  gap:1rem;
+  margin-top:0.8rem;
+}
+
+.project-buttons a{
+  flex:1;
+  text-align:center;
+
+  padding:0.5rem 0;
+  border:2px solid #000;
+  border-radius:999px;
+
+  font-family:'Poppins', sans-serif;
+  font-size:0.95rem;
+  font-weight:600;
+  text-decoration:none;
+  color:#000;
+
+  background:#fff;
+  transition:all 0.25s ease;
+}
+
+.project-buttons a:hover{
+  background:#f2d5aa;
+  transform:translateY(-2px);
+}
+
+
+.project-card:hover{
+  transform:translateY(-8px) rotate(-1.5deg);
+  box-shadow:8px 8px 0 #000;
+  background:#f3c96b;
+}
+
+/* TEXT */
+.project-card h3{
+  font-family:'Fredoka', sans-serif;
+  font-size:1.6rem;
+  color:#000;
+}
+
+.project-card p{
+  font-family:'Poppins', sans-serif;
+  font-size:1.05rem;
+  color:#000;
+  opacity:0.85;
+}
+
+/* TECH STACK */
+.tech-stack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.6rem;
+  margin-top:0.6rem;
+}
+
+.tech-stack span{
+  padding:0.35rem 0.9rem;
+  border:2px solid #000;
+  border-radius:999px;
+
+  font-family:'Poppins', sans-serif;
+  font-size:0.9rem;
+  font-weight:600;
+
+  background:#fff;
+}
+
+/* CTA */
+.projects-cta{
+  margin-top:6rem;
+  text-align:center;
+}
+
+.projects-cta h2{
+  font-family:'Fredoka', sans-serif;
+  font-size:2.4rem;
+  color:#000;
+}
+
+.projects-cta p{
+  font-family:'Poppins', sans-serif;
+  font-size:1.2rem;
+  margin-top:0.6rem;
+  opacity:0.8;
+}
+.connect-link{
+  display:inline-block;
+  margin-top:0.8rem;
+
+  font-family:'Poppins', sans-serif;
+  font-size:1.2rem;
+  font-weight:600;
+  text-decoration:none;
+  color:#000;
+
+  position:relative;
+}
+
+/* yellow underline hover */
+.connect-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:3px;
+  background:#f3c96b;
+  transition:width 0.25s ease;
+}
+
+.connect-link:hover::after{
+  width:100%;
+}
+
+@media (max-width:1024px){
+  .projects-page{
+    padding:5rem 4rem;
+  }
+
+  .projects-title{
+    font-size:3.2rem;
+  }
+
+  .projects-grid{
+    gap:2rem;
+  }
+}
+
+

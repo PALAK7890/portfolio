@@ -1,56 +1,95 @@
 .nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: none;
-  width: 100%;
-  height: 70px;
+  width:100%;
+  padding:1.6rem 4rem;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-  padding: 0 60px;
-  background: rgba(15,25,45,0.95);
-  backdrop-filter: blur(8px);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:100;
 
-  border-radius: 0;          /* remove round box */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  z-index: 1000;
+  background:#fdfaf5;
+  border-bottom:2px solid rgba(0,0,0,0.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+
+  transition:all 0.3s ease;
 }
 
-
+/* LOGO */
 .logo{
-  color:#f3c96b;
-  font-weight:700;
-  letter-spacing:2px;
-  font-size:18px;
+  font-family:'Fredoka', sans-serif;
+  font-size:2rem;
+  font-weight:600;
+  color:#000;
+
+  position:relative;
+  z-index:1;
+}
+
+/* yellow marker behind logo */
+.logo::after{
+  content:"";
+  position:absolute;
+  left:-6px;
+  bottom:6px;
+  width:110%;
+  height:12px;
+  background:#f3c96b;
+  z-index:-1;
+  transform:rotate(-2deg);
+}
+
+/* LINKS */
+.links{
+  display:flex;
+  gap:2.5rem;
 }
 
 .links a{
-  margin-left:30px;
   text-decoration:none;
-  color:#ddd;
-  font-size:14px;
+  font-family:'Poppins', sans-serif;
+  font-size:1.1rem;
+  font-weight:600;
+  color:#000;
+
   position:relative;
-  transition:0.3s;
+  transition:color 0.25s ease;
 }
 
+/* underline animation */
 .links a::after{
   content:"";
   position:absolute;
-  bottom:-6px;
   left:0;
-  width:0;
-  height:2px;
+  bottom:-6px;
+  width:0%;
+  height:3px;
   background:#f3c96b;
-  transition:0.3s;
+  transition:width 0.25s ease;
 }
 
-.links a:hover{
-  color:#f3c96b;
-}
-
+/* hover */
 .links a:hover::after{
   width:100%;
+}
+
+/* ACTIVE LINK (NavLink auto class) */
+.links a.active::after{
+  width:100%;
+}
+
+.links a.active{
+  color:#000;
+}
+@media (max-width:768px){
+  .nav{
+    padding:1.4rem 2rem;
+  }
+
+  .links{
+    gap:1.6rem;
+  }
 }
