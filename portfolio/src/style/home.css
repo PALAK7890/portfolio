@@ -5,71 +5,276 @@
   align-items:center;
   justify-content:center;
   position:relative;
-  overflow:hidden;
+  background:#fdfaf5;
 }
 
-/* 🔑 LOCK THE ARC CENTER */
-.letters-container{
+/* TITLE WRAPPER */
+.comic-title{
   position:absolute;
-  top:38%;          /* ABOVE IMAGE */
+  top:38%;
   left:50%;
-    z-index:1; 
   transform:translateX(-50%);
+  z-index:2;
+}
+/* IMAGE */
+.home-image{
+  width:60rem;
+  height:auto;
+  position:relative;
+  z-index:5;
+  margin-top:-20rem;
+  filter:
+    drop-shadow(-3px 0 0 #000)
+    drop-shadow(3px 0 0 #000)
+    drop-shadow(0 -3px 0 #000)
+    drop-shadow(0 3px 0 #000);
 }
 
-.letter{
+/* wrapper instead of single letter */
+.letter-group{
   position:absolute;
-
-  font-size:88px;            /* ⬅️ BIGGER LETTERS */
-  font-weight:700;
-  color:#000;
-
- font-family: "Fredoka", sans-serif;
-
-  z-index:1;                 /* ⬅️ BEHIND IMAGE */
 
   transform:
-    translate(var(--start-x), var(--start-y))
-    scale(0.4)
-    rotate(20deg);
+    translate(calc(var(--x) * -1), -100vh)
+    rotate(-20deg)
+    scale(0.3);
 
-  opacity:0.92;
+  opacity:0;
 
   transition:
-    transform 1.4s cubic-bezier(.22,1.2,.36,1),
-    opacity 0.6s ease;
+    transform 1.3s cubic-bezier(.22,1.2,.36,1),
+    opacity 0.5s ease;
 
   transition-delay:var(--delay);
 }
 
-@font-face {
-  font-family: "MilkywayDemo";
-  src: url("/fonts/Milkyway-DEMO.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* ✅ FINAL SEMI-OVAL */
-.letter.place{
+/* final fly-in position */
+.letter-group.fly-in{
   transform:
-    translate(var(--final-x), var(--final-y))
-    scale(1)
-    rotate(0deg);
+    translate(var(--x), var(--y))
+    rotate(var(--r))
+    scale(var(--s));
 
   opacity:1;
 }
 
+/* main comic letter */
+.comic-letter{
+ font-family: "Fredoka", sans-serif;
+  font-size:5.5rem;
+  color:#c09264;
+  line-height:1;
+    position:relative; 
+}
+.name-tag{
+  display:block;
+  margin-top:0.4rem;
+  font-size:1rem;
+  font-weight:600;
+  font-family:'Poppins', sans-serif;
+  color:#000;
+  text-align:center;
 
-.home-image{
-  width:260px;        /* ⬅️ BIGGER */
-  height:320px;       /* ⬅️ OVAL SHAPE */
+  transform: rotate(calc(var(--r) * -1));  /* 🔑 */
+}
 
-  border-radius:50%;  /* oval because width ≠ height */
-  object-fit:cover;
 
-  margin-top:90px;
-  position:relative;  /* ⬅️ REQUIRED */
-  z-index:10;          /* ⬅️ ABOVE LETTERS */
 
-  box-shadow:0 35px 60px rgba(0,0,0,0.25);
+/* ===== SKILLS SECTION ===== */
+.skills-section{
+  min-height:100vh;
+  padding:3rem 8rem;
+  background:#fdfaf5;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* SKILLS TITLE */
+.skills-title{
+position:relative;        
+  font-size:4rem;
+  font-family:'Fredoka', sans-serif;
+  color:#000;
+  margin-bottom:3rem;
+  z-index:1;
+}
+.skills-title::after{
+  content:"";
+  position:absolute;
+  left:-12px;
+  bottom:10px;
+
+  width:110%;
+  height:22px;
+
+  background:#f3c96b;
+  z-index:-1;
+
+  transform:rotate(-2deg);
+  border-radius:6px;   /* makes it look like marker */
+}
+.skills-subtitle{
+  margin-bottom:1.4rem;
+  font-family:'Fredoka', sans-serif;
+  font-size:1.4rem;
+  font-weight:100;
+  color:#000;
+  opacity:0.85;
+  letter-spacing:0.05rem;
+
+  opacity:0;
+  transform:translateY(10px);
+  transition:all 0.5s ease;
+}
+
+.skills-section.show .skills-subtitle{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:0.15s;
+}
+
+
+/* GRID */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:2.5rem;
+  width:100%;
+  max-width:1000px;
+}
+
+.skill-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;
+
+  padding:2.2rem 1.5rem;
+  border:3px solid #000;
+  border-radius:1.2rem;
+  background:#fff;
+
+  opacity:0;
+  transform:translateY(30px) rotate(-3deg);
+
+  transition:
+    transform 0.6s cubic-bezier(.22,1.2,.36,1),
+    opacity 0.4s ease,
+    background 0.4s ease;
+}
+
+
+@keyframes cardEnter{
+  0%{
+    opacity:0;
+    transform:translateY(20px) rotate(-3deg);
+    background:#f3c96b;
+  }
+
+  60%{
+    opacity:1;
+    transform:translateY(-6px) rotate(1.5deg);
+    background:#f3c96b;
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0) rotate(0deg);
+    background:#fff;
+  }
+}
+
+.skills-section.show .skill-card{
+  opacity:1;
+  transform:translateY(0) rotate(0deg);
+}
+.skills-section.show .skill-card:nth-child(1){ transition-delay:0.05s }
+.skills-section.show .skill-card:nth-child(2){ transition-delay:0.15s }
+.skills-section.show .skill-card:nth-child(3){ transition-delay:0.25s }
+.skills-section.show .skill-card:nth-child(4){ transition-delay:0.35s }
+.skills-section.show .skill-card:nth-child(5){ transition-delay:0.45s }
+.skills-section.show .skill-card:nth-child(6){ transition-delay:0.55s }
+.skills-section.show .skill-card:nth-child(7){ transition-delay:0.65s }
+.skills-section.show .skill-card:nth-child(8){ transition-delay:0.75s }
+.skills-section.show .skill-card:nth-child(9){ transition-delay:0.85s }
+.skills-section.show .skill-card:nth-child(10){ transition-delay:0.95s }
+
+
+/* ICON STYLE */
+.skill-card i{
+  font-size:3rem;
+  color:#000;          /* 🖤 BLACK ICONS */
+}
+
+/* TEXT */
+.skill-card span{
+  font-family:'Poppins', sans-serif;
+  font-size:1.2rem;
+  font-weight:600;
+  letter-spacing:0.05rem;
+}
+
+/* HOVER EFFECT */
+.skill-card:hover{
+  transform:translateY(-6px) rotate(-2deg);
+  box-shadow:6px 6px 0 #000;
+   background:#f3c96b; 
+}
+
+/* ===== WORKING ON MORE ===== */
+.working-more{
+  margin-top:5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.4rem;
+}
+
+/* RECTANGLE LOADER */
+.bar-loader{
+  display:flex;
+  gap:0.6rem;
+}
+
+.bar-loader span{
+  width:22px;
+  height:12px;
+background:#f3c96b; 
+  opacity:0.25;
+  animation:barPulse 1.4s infinite ease-in-out;
+}
+
+/* stagger animation */
+.bar-loader span:nth-child(1){ animation-delay:0s; }
+.bar-loader span:nth-child(2){ animation-delay:0.15s; }
+.bar-loader span:nth-child(3){ animation-delay:0.3s; }
+.bar-loader span:nth-child(4){ animation-delay:0.45s; }
+.bar-loader span:nth-child(5){ animation-delay:0.6s; }
+
+@keyframes barPulse{
+  0%{
+    opacity:0.25;
+    transform:scaleY(1);
+  }
+  40%{
+    opacity:1;
+    transform:scaleY(1.6);
+  }
+  80%,100%{
+    opacity:0.25;
+    transform:scaleY(1);
+  }
+}
+
+/* TEXT */
+.working-more p{
+  font-family:'Poppins', sans-serif;
+  font-size:1.1rem;
+  letter-spacing:0.2rem;
+  font-weight:600;
+  color:#000;
+  opacity:0.75;
 }
