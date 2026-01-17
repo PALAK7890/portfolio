@@ -82,6 +82,7 @@ useEffect(() => {
 
 
       <img src={face} alt="Palak" className="home-image" />
+     
       <div className="home-buttons">
     <a href="/resume.pdf" download className="comic-btn resume-btn">
       Resume ⬇️
@@ -92,6 +93,7 @@ useEffect(() => {
     </a>
   </div>
     </section>
+    
      <section     ref={skillsRef}
   className={`skills-section ${showSkills ? "show" : ""}`}>
         <h1 className="skills-title">My Skills</h1>
@@ -127,9 +129,9 @@ useEffect(() => {
   </div>
 
   <div className="skill-card">
-    <i className="devicon-cplusplus-plain"></i>
-    <span>C++</span>
-  </div>
+  <i className="devicon-figma-plain"></i>
+  <span>UI / UX</span>
+</div>
 
   <div className="skill-card">
     <i className="devicon-git-plain"></i>

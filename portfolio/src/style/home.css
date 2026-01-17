@@ -21,18 +21,44 @@
   position:absolute;
     font-family:'Fredoka', sans-serif;
    font-size: 3.3rem;
-
-     transform: translate(-310px, 200px);
-
+  opacity:0.85;
+  z-index: 5;
+  animation: flyInLeft 1.2s ease-out forwards;
+  animation-delay:0.5s; 
+   animation-fill-mode: both;
 }
 .year-manual{
   position:absolute;
     font-family:'Fredoka', sans-serif;
    font-size: 3.3rem;
-
-     transform: translate(245px, -130px);
+    animation: flyInRight 1.2s ease-out forwards;
+  animation-delay:0.7s;
 
 }
+
+@keyframes flyInLeft{
+  from{
+    transform: translate(-700px, 200px); /* further LEFT, same Y */
+    opacity:0;
+  }
+  to{
+    transform: translate(-310px, 200px); /* FINAL */
+    opacity:0.85;
+  }
+}
+
+
+@keyframes flyInRight{
+  from{
+    transform: translate(700px, -130px); /* further RIGHT, same Y */
+    opacity:0;
+  }
+  to{
+    transform: translate(245px, -130px); /* FINAL */
+    opacity:1;
+  }
+}
+
 /* IMAGE */
 .home-image{
   width:60rem;
@@ -47,9 +73,24 @@
     drop-shadow(0 3px 0 #000);
 }
 .home-buttons{
+
+  position:absolute;
+  bottom:70px;        /* distance from bottom */
+  left:50%;
+  transform:translateX(-50%);
+
   display:flex;
-  gap:20px;
+  gap:24px;
+
 }
+.home-image-block{
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
 
 
 /* BASE COMIC BUTTON */
