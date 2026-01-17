@@ -65,11 +65,11 @@
 .contact-form-wrap,
 .contact-mini-wrap{
   position:relative;
-  display:block;    
-  width: 100%;
+  display:block;
+  width:100%;
 }
 
-/* HARD COMIC SHADOW (ONLY HERE) */
+/* HARD COMIC SHADOW */
 .contact-form-wrap::after,
 .contact-mini-wrap::after{
   content:"";
@@ -127,23 +127,33 @@
   font-size:1.8rem;
 }
 
-.contact-form-box input,
-.contact-form-box textarea{
+/* 👉 FORM FIX */
+.contact-form-box form{
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+}
+
+/* INPUTS */
+.contact-form-box form input,
+.contact-form-box form textarea{
   padding:1rem 1.2rem;
   border:3px solid #000;
   border-radius:1rem;
   font-family:'Poppins', sans-serif;
   font-size:1rem;
   outline:none;
+  background:#fff;
 }
 
-.contact-form-box textarea{
+/* TEXTAREA */
+.contact-form-box form textarea{
   min-height:150px;
   resize:none;
 }
 
 /* BUTTON */
-.contact-form-box button{
+.contact-form-box form button{
   margin-top:0.8rem;
   padding:0.9rem;
   border:3px solid #000;
@@ -155,7 +165,7 @@
   transition:transform 0.25s ease;
 }
 
-.contact-form-box button:hover{
+.contact-form-box form button:hover{
   transform:translateY(-4px);
 }
 
@@ -230,6 +240,79 @@
 
 .contact-socials a:hover{
   transform:translateY(-4px) rotate(-5deg);
+}
+/* ============================= */
+/* COMIC POPUP */
+/* ============================= */
+
+.comic-popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.comic-popup{
+  background:#fdfaf5;
+  border:3px solid #000;
+  border-radius:1.4rem;
+  padding:2rem 2.4rem;
+  text-align:center;
+  min-width:280px;
+
+  box-shadow:
+    6px 6px 0 #000,
+    12px 12px 0 rgba(0,0,0,0.15);
+
+  animation:popupPop 0.35s cubic-bezier(.22,1.2,.36,1);
+}
+
+@keyframes popupPop{
+  from{
+    transform:scale(0.7) rotate(-4deg);
+    opacity:0;
+  }
+  to{
+    transform:scale(1) rotate(0deg);
+    opacity:1;
+  }
+}
+
+.comic-popup.success{
+  background:#f3ffe6;
+}
+
+.comic-popup.error{
+  background:#ffecec;
+}
+
+.comic-popup h3{
+  font-family:'Fredoka', sans-serif;
+  font-size:1.8rem;
+  margin-bottom:0.6rem;
+}
+
+.comic-popup p{
+  font-family:'Poppins', sans-serif;
+  font-size:1rem;
+  margin-bottom:1.4rem;
+}
+
+.comic-popup button{
+  padding:0.7rem 1.6rem;
+  border:3px solid #000;
+  border-radius:999px;
+  background:#f3c96b;
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.comic-popup button:hover{
+  transform:translateY(-3px);
 }
 
 /* ===== RESPONSIVE ===== */

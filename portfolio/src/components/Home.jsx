@@ -80,8 +80,9 @@ useEffect(() => {
 
 </div>
 
-
-      <img src={face} alt="Palak" className="home-image" />
+<div className="home-image-wrap">
+  <img src={face} alt="Palak" className="home-image" />
+</div>
      
       <div className="home-buttons">
     <a href="/resume.pdf" download className="comic-btn resume-btn">
