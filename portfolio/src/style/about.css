@@ -1,76 +1,204 @@
+/* ===== PAGE ===== */
 .about-page{
-  min-height:100vh;
+  padding:120px 10vw 220px;   /* extra bottom space for footer */
+  background:#fdfaf5;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:70px;
+
+  position:relative;
+}
+/* ===== ABOUT ME HEADING ===== */
+.about-heading{
+  text-align:center;
+   position:relative;   /* 🔥 ADD THIS */
+  z-index:2;  
+}
+
+.about-heading h1{
+  font-family:'Fredoka', sans-serif;
+  font-size:3.2rem;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+    z-index:1; 
+}
+
+/* yellow comic highlight */
+.about-heading h1::after{
+  content:"";
+  position:absolute;
+  left:-12px;
+  bottom:10px;
+  width:125%;
+  height:20px;
+  background:#f3c96b;
+  z-index:-1;
+  border-radius:6px;
+  transform:rotate(-2deg);
+}
+
+.about-heading p{
+  margin-top:0.8rem;
+  font-family:'Poppins', sans-serif;
+  font-size:1.1rem;
+  opacity:0.85;
+}
+
+
+
+/* ===== TOP ROW ===== */
+.about-top{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:80px;
-  padding:120px 10vw;
-  background:#fdfaf5;
+  width:100%;
 }
 
-/* LEFT IMAGE */
-.about-left{
-  position:relative;
-}
-
+/* IMAGE */
 .about-left img{
-  width:320px;
+  width:300px;
   border-radius:10px;
   background:#fff;
   padding:8px;
 
   box-shadow:
-    6px 6px 0px #000,
-    12px 12px 0px #f3c96b;
+    6px 6px 0 #000,
+    12px 12px 0 #f3c96b;
 
-  transition:0.25s ease;
-    animation: comicFloat 4s ease-in-out infinite;
+  animation: comicFloat 4s ease-in-out infinite;
 }
 
-.about-left img:hover{
-  transform: translate(-6px,-6px);
-  box-shadow:
-    10px 10px 0px #000,
-    18px 18px 0px #f3c96b;
-}
+/* ABOUT BOX */
 .about-right{
-  max-width:500px;
-  background:#ffffff;
+  max-width:560px;
+  background:#fff;
   padding:40px;
   border:3px solid #000;
-  box-shadow: 8px 8px 0px #000;
-    animation: comicSlide 0.8s ease forwards;
+  box-shadow:8px 8px 0 #000;
+
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+
+  overflow:hidden;
 }
+
 .about-text{
-  font-size:1.1rem;
-  line-height:1.8;
-  color:#111;
+ font-size:1.15rem;
+  line-height:1.9;
   font-weight:500;
-  letter-spacing:0.5px;
+  color:#111;
 }
+
 .about-text span{
-  display:inline-block;
-  transition:0.2s;
+   display:inline-block;
+  white-space:normal;
+    margin-right:-0.02em;
 }
 
-.about-text span:hover{
-  color:#f3c96b;
-  transform: translateY(-3px) rotate(-2deg);
+/* ===== SECTIONS ===== */
+.about-section{
+  width:100%;
+  max-width:900px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* 🔥 IMPORTANT: spacing so footer never overlaps */
+.about-section:last-of-type{
+  margin-bottom:80px;
+}
+
+.about-section h3{
+  font-family:'Fredoka', sans-serif;
+  font-size:1.6rem;
+}
+
+/* BOX */
+.about-box{
+  background:#fff;
+  border:3px solid #000;
+  border-radius:14px;
+  padding:28px 32px;
+
+  box-shadow:
+    6px 6px 0 #000,
+    12px 12px 0 #f3c96b;
+
+  font-family:'Poppins', sans-serif;
+  font-size:1.05rem;
+  line-height:1.7;
+}
+
+.about-box h4{
+  font-family:'Fredoka', sans-serif;
+  font-size:1.3rem;
+  margin-bottom:6px;
+}
+
+/* APPROACH LIST */
+.about-list{
+  padding-left:1.2rem;
+}
+
+.about-list li{
+  margin-bottom:0.6rem;
+}
+
+/* PROJECT GRID */
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:32px;
+  width:100%;
 }
 
 
-@keyframes comicSlide{
-  from{
-    opacity:0;
-    transform: translateX(40px);
-  }
-  to{
-    opacity:1;
-    transform: translateX(0);
-  }
+/* cards */
+.project-card{
+  background:#fff;
+  border:3px solid #000;
+  border-radius:14px;
+  padding:26px 22px;
+  text-align:center;
+
+  box-shadow:
+    6px 6px 0 #000,
+    12px 12px 0 #f3c96b;
+
+  font-family:'Poppins', sans-serif;
+  font-size:1.05rem;
+
+  position:relative;
+  z-index:1;
 }
+
+
+/* ===== ANIMATION ===== */
 @keyframes comicFloat{
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-6px); }
+  100%{ transform:translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px){
+  .about-top{
+    flex-direction:column;
+    gap:40px;
+    text-align:center;
+  }
+
+  .about-left img{
+    width:240px;
+  }
+
+  .about-right{
+    padding:32px;
+  }
 }

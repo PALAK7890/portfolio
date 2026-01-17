@@ -6,6 +6,7 @@
   justify-content:center;
   position:relative;
   background:#fdfaf5;
+  
 }
 
 /* TITLE WRAPPER */
@@ -15,6 +16,22 @@
   left:50%;
   transform:translateX(-50%);
   z-index:2;
+}
+.palak-manual{
+  position:absolute;
+    font-family:'Fredoka', sans-serif;
+   font-size: 3.3rem;
+
+     transform: translate(-310px, 200px);
+
+}
+.year-manual{
+  position:absolute;
+    font-family:'Fredoka', sans-serif;
+   font-size: 3.3rem;
+
+     transform: translate(245px, -130px);
+
 }
 /* IMAGE */
 .home-image{
@@ -28,6 +45,40 @@
     drop-shadow(3px 0 0 #000)
     drop-shadow(0 -3px 0 #000)
     drop-shadow(0 3px 0 #000);
+}
+.home-buttons{
+  display:flex;
+  gap:20px;
+}
+
+
+/* BASE COMIC BUTTON */
+.comic-btn{
+  text-decoration:none;
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  font-size:1rem;
+
+  padding:12px 22px;
+  border:3px solid #000;
+  border-radius:999px;
+  background:#fff;
+  color:#000;
+
+  box-shadow:
+    4px 4px 0 #000,
+    8px 8px 0 #f3c96b;
+
+  transition:transform 0.2s ease;
+}
+/* RIGHT BUTTON (KNOW MORE) */
+.know-btn{
+  background:#fff;
+}
+
+/* HOVER */
+.comic-btn:hover{
+  transform:translate(-4px, -4px);
 }
 
 /* wrapper instead of single letter */
@@ -66,17 +117,7 @@
   line-height:1;
     position:relative; 
 }
-.name-tag{
-  display:block;
-  margin-top:0.4rem;
-  font-size:1rem;
-  font-weight:600;
-  font-family:'Poppins', sans-serif;
-  color:#000;
-  text-align:center;
 
-  transform: rotate(calc(var(--r) * -1));  /* 🔑 */
-}
 
 
 

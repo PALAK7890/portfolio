@@ -10,6 +10,14 @@ import Footer from "./components/footer"
 export default function App(){
   return(
     <Router>
+
+      {/* ✈️ COMIC PAPER PLANE BACKGROUND */}
+      <div className="paper-plane-bg">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <span key={i} className="paper-plane">heyyy</span>
+        ))}
+      </div>
+
       <NavBar />
 
       <Routes>
@@ -18,7 +26,9 @@ export default function App(){
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+
       <Footer/>
+
     </Router>
   )
 }

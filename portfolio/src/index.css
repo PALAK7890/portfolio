@@ -8,3 +8,55 @@ html, body, #root{
   width:100%;
   height:100%;
 }
+/* ===== PAPER PLANE BACKGROUND ===== */
+.paper-plane-bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:999; 
+  
+}
+
+/* SINGLE PLANE */
+.paper-plane{
+  position:absolute;
+  font-size:22px;
+  opacity:0.12;
+
+  animation:
+    flyAcross linear infinite,
+    floatUpDown ease-in-out infinite;
+}
+
+/* RANDOM POSITIONS & SPEEDS */
+.paper-plane:nth-child(1){ top:5%; left:-15%; animation-duration:20s, 4s; }
+.paper-plane:nth-child(2){ top:20%; left:-25%; animation-duration:26s, 5s; }
+.paper-plane:nth-child(3){ top:35%; left:-10%; animation-duration:22s, 3s; }
+.paper-plane:nth-child(4){ top:50%; left:-30%; animation-duration:28s, 6s; }
+.paper-plane:nth-child(5){ top:65%; left:-20%; animation-duration:24s, 4s; }
+.paper-plane:nth-child(6){ top:80%; left:-35%; animation-duration:30s, 5s; }
+
+.paper-plane:nth-child(7){ top:10%; left:-20%; animation-duration:25s, 3.5s; }
+.paper-plane:nth-child(8){ top:30%; left:-30%; animation-duration:27s, 4.5s; }
+.paper-plane:nth-child(9){ top:55%; left:-15%; animation-duration:23s, 3s; }
+.paper-plane:nth-child(10){ top:70%; left:-25%; animation-duration:29s, 6s; }
+.paper-plane:nth-child(11){ top:90%; left:-10%; animation-duration:31s, 4s; }
+.paper-plane:nth-child(12){ top:45%; left:-35%; animation-duration:26s, 5s; }
+
+/* MOVE LEFT → RIGHT */
+@keyframes flyAcross{
+  from{
+    transform:translateX(0) rotate(10deg);
+  }
+  to{
+    transform:translateX(130vw) rotate(25deg);
+  }
+}
+
+/* FLOAT EFFECT */
+@keyframes floatUpDown{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
+  100%{ transform:translateY(0); }
+}
